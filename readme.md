@@ -19,4 +19,4 @@ Executer les deux commandes suivantes :
 
 ## Accéder au serveur
 
-Une fois que le apply est terminé, vous pouvez vérifier que le serveur est accessible via l'url : http://<ip_instance_ec2>:3000/swagger/index.html
+Une fois que le apply est terminé, vous pouvez vérifier que le serveur est accessible via l'url : `http://<ip_instance_ec2>:3000/swagger/index.html`
