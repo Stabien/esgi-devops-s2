@@ -4,3 +4,14 @@ variable "aws_credentials" {
     secret_key = string
   })
 }
+
+variable "aws_region" {
+  type = string
+}
+
+variable "aws_instance" {
+  type = object({
+    ami = string
+    instance_type = string
+  })
+}

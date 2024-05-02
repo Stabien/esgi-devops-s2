@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = var.aws_region
   access_key = var.aws_credentials.access_key
   secret_key = var.aws_credentials.secret_key
 }
@@ -57,8 +57,8 @@ resource "aws_security_group_rule" "allow_server_port" {
 }
 
 resource "aws_instance" "example_server" {
-  ami           = "ami-04b70fa74e45c3917"
-  instance_type = "t2.micro"
+  ami           = var.aws_instance.ami
+  instance_type = var.aws_instance.instance_type
   key_name = aws_key_pair.ssh_key.key_name
   associate_public_ip_address = true
   security_groups = [aws_security_group.example_sg.name]
@@ -77,23 +77,23 @@ resource "null_resource" "ssh_to_docker_container" {
   }
 
   provisioner "file" {
-    source = "install.sh"
+    source = "./scripts/install.sh"
     destination = "/tmp/install.sh"
   }
 
   provisioner "file" {
-    source = ".env.local"
+    source = "./conf/.env.local"
     destination = "/tmp/.env.local"
   }
 
   provisioner "file" {
-    source = "nginx.conf"
+    source = "./conf/nginx.conf"
     destination = "/tmp/nginx.conf"
   }
 
   provisioner "file" {
-    source = "clone_repo.sh"
-    destination = "/tmp/clone_repo.sh"
+    source = "./scripts/run.sh"
+    destination = "/tmp/run.sh"
   }
 
   provisioner "remote-exec" {
@@ -101,8 +101,8 @@ resource "null_resource" "ssh_to_docker_container" {
       "cd /tmp",
       "chmod 777 ./install.sh",
       "./install.sh",
-      "chmod 777 ./clone_repo.sh",
-      "./clone_repo.sh"
+      "chmod 777 ./run.sh",
+      "./run.sh"
     ]
   }
 
