@@ -9,7 +9,7 @@ Pour configurer les credentials AWS, il faut remplir la variable "aws_credential
 Ceci peut être fait de deux manières possibles : 
 
 - Décommenter la variable "aws_credentials" dans le fichier "terraform.tfvars" et remplacer les placeholders par les deux clés.
-- Utiliser les variables d'environnement du shell pour set "aws_credentials" avec cette commande : `export TF_VAR_aws_credentials='{ access_key = "<your_access_key>", secret_key = "<your_secret_key>" }'
+- Utiliser les variables d'environnement du shell pour set "aws_credentials" avec cette commande : `export TF_VAR_aws_credentials='{ access_key = "<your_access_key>", secret_key = "<your_secret_key>" }'`
 
 ## Lancer la config terraform
 
