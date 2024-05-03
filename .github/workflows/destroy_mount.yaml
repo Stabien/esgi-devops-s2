@@ -28,7 +28,13 @@ jobs:
           terraform_version: "1.1.7"
       - name: "Terraform plan and apply"
         run: |
+          echo ${{ secrets.GITHUB_TOKEN  }}
+          echo ${{ secrets.TF_VAR_ACCESS_KEY }}
+          echo ${{ secrets.TF_VAR_SECRET_KEY }}
           terraform init    
           terraform destroy    
           terraform plan    
           terraform apply -auto-approve
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.TF_VAR_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_VAR_ACCESS_KEY }}
