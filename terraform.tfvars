@@ -1,7 +1,7 @@
-# aws_credentials = {
-#   access_key = "<your_access_key>"
-#   secret_key = "<your_secret_key>"
-# }
+aws_credentials = {
+  access_key = "<your_access_key>"
+  secret_key = "<your_secret_key>"
+}
 
 aws_region = "us-east-1"
 

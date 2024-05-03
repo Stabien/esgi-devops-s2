@@ -3,13 +3,32 @@ name: "Destroy and Mount Terraform"
 on:
   push:
     paths:
+      - "./github/workflows/destroy_mount.yaml"
       - "conf/**"
       - "scripts/**"
+      - "main.tf"
+      - "terraform.tfvars"
 
 jobs:
   destroy-mount:
-    name: "Destroy and mount"
+    name: "Test"
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+      - name: Generate SSH Key
+        id: ssh-key
+        uses: truemark/generate-ssh-key-action@v2
+        with:
+          name: "id_rsa"
+      - name: "Config terraform"
+        if: false
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.1.7"
+      - name: "Terraform plan and apply"
+        run: |
+          terraform init    
+          terraform destroy    
+          terraform plan    
+          terraform apply -auto-approve
