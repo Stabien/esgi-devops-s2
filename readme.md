@@ -25,3 +25,4 @@ Executer les deux commandes suivantes :
 ## Accéder au serveur
 
 Une fois que le apply est terminé, vous pouvez vérifier que le serveur est accessible via l'url : `http://<ip_instance_ec2>:3000/swagger/index.html`
+Il est possible qu'il y ai une erreur 502 qui s'affiche. Si c'est le cas attendre entre 30s et 1 minute puis refresh et normalement le swagger devrait s'afficher
