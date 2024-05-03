@@ -33,8 +33,5 @@ jobs:
           echo ${{ secrets.TF_VAR_SECRET_KEY }}
           terraform init    
           terraform destroy    
-          terraform plan    
+          terraform plan -var="access_key=${{ secrets.TF_VAR_ACCESS_KEY }}" -var="secret_key=${{ secrets.TF_VAR_SECRET_KEY }}"
           terraform apply -auto-approve
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.TF_VAR_ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_VAR_ACCESS_KEY }}
