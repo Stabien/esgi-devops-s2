@@ -5,7 +5,7 @@ sudo apt-get install git -y
 #Install Nginx
 sudo apt install nginx -y
 sudo cp /tmp/nginx.conf /etc/nginx/nginx.conf
-sudo systemctl start nginx.service
+sudo service nginx restart
 
 # Add Docker's official GPG key:
 sudo apt-get install ca-certificates curl -y

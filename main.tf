@@ -47,15 +47,6 @@ resource "aws_security_group_rule" "allow_server_connection" {
   security_group_id = aws_security_group.example_sg.id
 }
 
-resource "aws_security_group_rule" "allow_server_port" {
-  type              = "ingress"
-  from_port         = 3000
-  to_port           = 3000
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"] // Autoriser l'accès depuis n'importe quelle adresse IP
-  security_group_id = aws_security_group.example_sg.id
-}
-
 resource "aws_instance" "example_server" {
   ami           = var.aws_instance.ami
   instance_type = var.aws_instance.instance_type
