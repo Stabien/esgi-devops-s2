@@ -9,8 +9,8 @@ terraform {
 
 provider "aws" {
   region = var.aws_region
-  access_key = var.access_key
-  secret_key = var.secret_key
+  access_key = var.aws_credentials.access_key
+  secret_key = var.aws_credentials.secret_key
 }
 
 resource "aws_key_pair" "ssh_key" {

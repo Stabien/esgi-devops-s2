@@ -2,18 +2,23 @@
 
 Lancer la commande `terraform init`
 
+## Configurer sa clé ssh
+
+Il faut, avant de lancer la fonction, changer l'id de la clé ssh (main.tf:18 et main.tf:67), `id_rsa` en `<votre_clé_ssh>`
+
 ## Configurer les credentials AWS
 
 Pour configurer les credentials AWS, il faut remplir la variable "aws_credentials".
 
-Ceci peut être fait de deux manières possibles : 
+Ceci peut être fait de deux manières possibles :
 
 - Décommenter la variable "aws_credentials" dans le fichier "terraform.tfvars" et remplacer les placeholders par les deux clés.
 - Utiliser les variables d'environnement du shell pour set "aws_credentials" avec cette commande : `export TF_VAR_aws_credentials='{ access_key = "<your_access_key>", secret_key = "<your_secret_key>" }'`
 
 ## Lancer la config terraform
 
-Executer les deux commandes suivantes : 
+Executer les deux commandes suivantes :
+
 - `terraform plan`
 - `terraform apply`
 

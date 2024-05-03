@@ -1,0 +1,24 @@
+name: "Destroy and Mount Terraform"
+
+on:
+  push:
+    paths:
+      - "main.tf"
+      - "main.tf"
+
+jobs:
+  destroy-mount:
+    name: "Test"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+      - name: "Config terraform"
+        if: false
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.1.7"
+      - name: "Terraform plan and apply"
+        run: |
+          terraform plan    
+          terraform apply -y
